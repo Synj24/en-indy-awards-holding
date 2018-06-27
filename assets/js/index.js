@@ -1,37 +1,42 @@
-// TODO
-// - [ ] import model
-// - [ ] figure out tranpareny (optional)
-// - [ ] intergrate mailchimp API
-
+// Set up global variables
 var THREE = require( 'three' );
-// import * as Sketch from 'sketch-js';
-//
-
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 90, window.innerWidth/window.innerHeight, 0.1, 1000 );
-
+scene = new THREE.Scene();
+var  renderer, camera, cube;
+var winWidth = window.innerWidth,
+    winHeight = window.innerHeight;
 // var loader = new THREE.GLTFLoader();
 
-// loader.load(
-//   'obj/cube.gltf',
-//   function ( gltf ) {
-//     scene.add( gltf.scene )
-//   })
-
-var renderer = new THREE.WebGLRenderer(
+// Define the existing canvas as the renderer
+renderer = new THREE.WebGLRenderer(
   {
     canvas: background,
     antialias:true,
     alpha: true
   });
-renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setSize( winWidth, winHeight );
 
-var geometry = new THREE.BoxGeometry( 3, 3, 3 );
-var material = new THREE.MeshBasicMaterial( { color: 0xdf6a66, opacity: 0.63 } );
-var cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
-
+// Define the camera and set its position
+camera = new THREE.PerspectiveCamera(
+  90,
+  winWidth/winHeight,
+  0.1,
+  1000
+);
 camera.position.set(-2, 1, 3.3);
+
+// Define our cube. So advanced wow
+var geometry = new THREE.BoxGeometry( 3, 3, 3 );
+var material = new THREE.MeshBasicMaterial(
+  {
+    color: 0xdf6a66,
+    opacity: 0.63
+  }
+);
+
+cube = new THREE.Mesh( geometry, material );
+
+// Add the cube to the scene and make animation happen
+scene.add( cube );
 
 var animate = function () {
 	requestAnimationFrame( animate );

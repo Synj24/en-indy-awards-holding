@@ -1,6 +1,6 @@
-/* TODO
-- [ ] - style typed input
-- [ ] - mobile styles */
+@custom-media --small-viewport (max-width: 1024px)
+@custom-media --medium-viewport (min-width: 1025px)
+@custom-media --very-small (max-width: 711px)
 
 *
   margin: 0px
@@ -15,34 +15,65 @@ body
   font-family: 'Century Gothic', CenturyGothic, AppleGothic, 'Montserrat', sans-serif
   color: white
 
+main
+  position: relative
+
+#cube
+  width: 76%
+  position: absolute
+  right: -17%
+  bottom: -23%
+  @media (--medium-viewport)
+    display: none
+  @media (--very-small)
+    bottom: -2%
+
 #background
-  width: 100%
-  height: 100%
+  @media (--small-viewport)
+    visibility: hidden
+  width: 100vw
+  height: 100vh
 
 main
   background: linear-gradient(to left top, #B92B27, #1565C0)
 
 .logo
   position: absolute
-  left: 148px
+  left: 11% //148px
   top: 121px
   width: 500px
+  @media (--very-small)
+    width: 57%
+    top: 5%
+
 
 #sell
   position: absolute
-  left: 163px
+  left: 13.225% //163px
   top: 550px
+  @media (--very-small)
+    top: 61vw
+    left: 7%
 
 #register
   position: absolute
   display: flex
-  left: 160px
+  left: 13% //160px
   top: 603px
+  @media (--small-viewport)
+    width: 85%
+  @media (--very-small)
+    top: 74vw
+    left: 7%
   & input
+    color: #6d4d69
     width: 737px
+    @media (--small-viewport)
+      width: 100%
     height: 50px
-  & input::placeholder
+    font-size: 18px
     padding-left: 10px
+  & input::placeholder
     font-style: italic
     font-size: 18px
   & button

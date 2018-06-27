@@ -1,13 +1,12 @@
-// TODO
-// - [x] link to twitter on hashtag
 extends(src='layout.sgr')
   block(name='content')
+    img#cube(src="img/wireframe-cube.png" alt="A wireframe of a cube")
     canvas#background
     img.logo(src="img/EN_Indy Logo_Red.svg" alt="logo")
     h1#sell Coming Soon!
-    form#register
-        input(type="text" placeholder="Enter your email to say in the loop.")
-        button
+    form#register(action="https://formspree.io/mgregory@mashmedia.net" method="POST")
+        input(type="email" name="_replyto" placeholder="Enter your email to say in the loop.")
+        button(type="submit" value="Send")
           i.fa.fa-paper-plane-o
     a#hashtag(href="https://twitter.com/hashtag/enindys?f=tweets" target="_blank")
       h3 #enindys
